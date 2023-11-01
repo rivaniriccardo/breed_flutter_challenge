@@ -169,21 +169,21 @@ mixin _$BreedsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Breeds breeds) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(Breeds breeds)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Breeds breeds)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -269,7 +269,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Breeds breeds) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -279,7 +279,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(Breeds breeds)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -289,7 +289,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Breeds breeds)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -344,9 +344,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Breeds breeds});
-
-  $BreedsCopyWith<$Res> get breeds;
+  $Res call({List<Breed> breeds});
 }
 
 /// @nodoc
@@ -364,28 +362,25 @@ class __$$LoadedImplCopyWithImpl<$Res>
   }) {
     return _then(_$LoadedImpl(
       breeds: null == breeds
-          ? _value.breeds
+          ? _value._breeds
           : breeds // ignore: cast_nullable_to_non_nullable
-              as Breeds,
+              as List<Breed>,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BreedsCopyWith<$Res> get breeds {
-    return $BreedsCopyWith<$Res>(_value.breeds, (value) {
-      return _then(_value.copyWith(breeds: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.breeds});
+  const _$LoadedImpl({required final List<Breed> breeds}) : _breeds = breeds;
 
+  final List<Breed> _breeds;
   @override
-  final Breeds breeds;
+  List<Breed> get breeds {
+    if (_breeds is EqualUnmodifiableListView) return _breeds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_breeds);
+  }
 
   @override
   String toString() {
@@ -397,11 +392,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.breeds, breeds) || other.breeds == breeds));
+            const DeepCollectionEquality().equals(other._breeds, _breeds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, breeds);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_breeds));
 
   @JsonKey(ignore: true)
   @override
@@ -413,7 +409,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Breeds breeds) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) {
     return loaded(breeds);
@@ -423,7 +419,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(Breeds breeds)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) {
     return loaded?.call(breeds);
@@ -433,7 +429,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Breeds breeds)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -479,9 +475,9 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements BreedsState {
-  const factory _Loaded({required final Breeds breeds}) = _$LoadedImpl;
+  const factory _Loaded({required final List<Breed> breeds}) = _$LoadedImpl;
 
-  Breeds get breeds;
+  List<Breed> get breeds;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -526,7 +522,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(Breeds breeds) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -536,7 +532,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(Breeds breeds)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -546,7 +542,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(Breeds breeds)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {

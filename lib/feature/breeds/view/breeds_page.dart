@@ -35,23 +35,15 @@ class BreedsList extends StatelessWidget {
     super.key,
   });
 
-  final Breeds breeds;
+  final List<Breed> breeds;
 
   @override
   Widget build(BuildContext context) {
-    // Our model, breeds.message is a Map<String, List<String>>
-    // We need to convert it to a List<String> to use it in a ListView
-    // Ordina le stringhe in ordine alfabetico
-    final breedsList = breeds.message.keys.toList()
-      ..sort(
-        (a, b) => a.compareTo(b),
-      );
-
     return ListView.builder(
-      itemCount: breedsList.length,
+      itemCount: breeds.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(breedsList[index]),
+          title: Text(breeds[index].breed),
         );
       },
     );
