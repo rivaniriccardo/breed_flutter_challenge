@@ -4,13 +4,23 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a coding challenge.
 
-A few resources to get you started if this is your first Flutter project:
+The informations for the coding challenge can be found [here](https://github.com/andreaperinu/flutter-challenge)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Dependencies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Flutter installed on your system
+2. lcov installed on your system (`brew install lcov`) to generate the coverage report
+
+## How to run the project
+
+1. Clone the project
+2. Run `flutter pub get`
+3. Run `flutter run`
+
+## How to run the tests
+
+1. Run `make test-unit` to run the unit tests
+2. Run `make test-coverage` to run the tests and generate the coverage report
+3. Run `make test-golden` to run the golden tests
