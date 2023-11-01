@@ -13,7 +13,7 @@ SAMPLE:
 @freezed
 class Breed with _$Breed {
   const factory Breed({
-    required String breed,
+    required String name,
     required List<String> subBreeds,
   }) = _Breed;
 

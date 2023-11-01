@@ -8,11 +8,15 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:breed_flutter_challenge/core/di/register_module.dart' as _i7;
-import 'package:breed_flutter_challenge/feature/breeds/bloc/breeds_bloc.dart'
-    as _i6;
-import 'package:breed_flutter_challenge/feature/breeds/repo/breeds_repo.dart'
+import 'package:breed_flutter_challenge/core/di/register_module.dart' as _i9;
+import 'package:breed_flutter_challenge/feature/breed/bloc/breed_bloc.dart'
+    as _i7;
+import 'package:breed_flutter_challenge/feature/breed/repo/breed_repo.dart'
     as _i5;
+import 'package:breed_flutter_challenge/feature/breeds/bloc/breeds_bloc.dart'
+    as _i8;
+import 'package:breed_flutter_challenge/feature/breeds/repo/breeds_repo.dart'
+    as _i6;
 import 'package:breed_flutter_challenge/utils/utils.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:http/http.dart' as _i3;
@@ -32,11 +36,15 @@ _i1.GetIt $initGetIt(
   final registerModule = _$RegisterModule();
   gh.factory<_i3.Client>(() => registerModule.httpClient);
   gh.factory<_i4.RestClient>(() => registerModule.restClient);
-  gh.factory<_i5.BreedsRepo>(
-      () => _i5.BreedsRepo(restClient: gh<_i4.RestClient>()));
-  gh.factory<_i6.BreedsBloc>(
-      () => _i6.BreedsBloc(breedsRepo: gh<_i5.BreedsRepo>()));
+  gh.factory<_i5.BreedRepo>(
+      () => _i5.BreedRepo(restClient: gh<_i4.RestClient>()));
+  gh.factory<_i6.BreedsRepo>(
+      () => _i6.BreedsRepo(restClient: gh<_i4.RestClient>()));
+  gh.factory<_i7.BreedBloc>(
+      () => _i7.BreedBloc(breedRepo: gh<_i5.BreedRepo>()));
+  gh.factory<_i8.BreedsBloc>(
+      () => _i8.BreedsBloc(breedsRepo: gh<_i6.BreedsRepo>()));
   return getIt;
 }
 
-class _$RegisterModule extends _i7.RegisterModule {}
+class _$RegisterModule extends _i9.RegisterModule {}

@@ -48,7 +48,7 @@ class BreedsList extends StatelessWidget {
       itemBuilder: (context, index) {
         return Card(
           child: ListTile(
-            title: Text('Breed name: ${breeds[index].breed}',
+            title: Text('Breed name: ${breeds[index].name}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 )),

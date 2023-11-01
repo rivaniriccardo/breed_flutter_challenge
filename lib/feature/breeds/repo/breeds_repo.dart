@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:breed_flutter_challenge/model/breeds/breeds.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:breed_flutter_challenge/utils/utils.dart';
 import 'package:injectable/injectable.dart';
@@ -29,7 +28,7 @@ class BreedsRepo {
       decodedBreeds.message.entries.map(
         (entry) {
           return Breed(
-            breed: entry.key,
+            name: entry.key,
             subBreeds: List<String>.from(
               entry.value.map(
                 (subBreed) => subBreed,

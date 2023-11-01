@@ -20,7 +20,7 @@ Breed _$BreedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Breed {
-  String get breed => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   List<String> get subBreeds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +33,7 @@ abstract class $BreedCopyWith<$Res> {
   factory $BreedCopyWith(Breed value, $Res Function(Breed) then) =
       _$BreedCopyWithImpl<$Res, Breed>;
   @useResult
-  $Res call({String breed, List<String> subBreeds});
+  $Res call({String name, List<String> subBreeds});
 }
 
 /// @nodoc
@@ -49,13 +49,13 @@ class _$BreedCopyWithImpl<$Res, $Val extends Breed>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? breed = null,
+    Object? name = null,
     Object? subBreeds = null,
   }) {
     return _then(_value.copyWith(
-      breed: null == breed
-          ? _value.breed
-          : breed // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       subBreeds: null == subBreeds
           ? _value.subBreeds
@@ -72,7 +72,7 @@ abstract class _$$BreedImplCopyWith<$Res> implements $BreedCopyWith<$Res> {
       __$$BreedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String breed, List<String> subBreeds});
+  $Res call({String name, List<String> subBreeds});
 }
 
 /// @nodoc
@@ -86,13 +86,13 @@ class __$$BreedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? breed = null,
+    Object? name = null,
     Object? subBreeds = null,
   }) {
     return _then(_$BreedImpl(
-      breed: null == breed
-          ? _value.breed
-          : breed // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       subBreeds: null == subBreeds
           ? _value._subBreeds
@@ -105,15 +105,14 @@ class __$$BreedImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BreedImpl implements _Breed {
-  const _$BreedImpl(
-      {required this.breed, required final List<String> subBreeds})
+  const _$BreedImpl({required this.name, required final List<String> subBreeds})
       : _subBreeds = subBreeds;
 
   factory _$BreedImpl.fromJson(Map<String, dynamic> json) =>
       _$$BreedImplFromJson(json);
 
   @override
-  final String breed;
+  final String name;
   final List<String> _subBreeds;
   @override
   List<String> get subBreeds {
@@ -124,7 +123,7 @@ class _$BreedImpl implements _Breed {
 
   @override
   String toString() {
-    return 'Breed(breed: $breed, subBreeds: $subBreeds)';
+    return 'Breed(name: $name, subBreeds: $subBreeds)';
   }
 
   @override
@@ -132,7 +131,7 @@ class _$BreedImpl implements _Breed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BreedImpl &&
-            (identical(other.breed, breed) || other.breed == breed) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
                 .equals(other._subBreeds, _subBreeds));
   }
@@ -140,7 +139,7 @@ class _$BreedImpl implements _Breed {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, breed, const DeepCollectionEquality().hash(_subBreeds));
+      runtimeType, name, const DeepCollectionEquality().hash(_subBreeds));
 
   @JsonKey(ignore: true)
   @override
@@ -158,13 +157,13 @@ class _$BreedImpl implements _Breed {
 
 abstract class _Breed implements Breed {
   const factory _Breed(
-      {required final String breed,
+      {required final String name,
       required final List<String> subBreeds}) = _$BreedImpl;
 
   factory _Breed.fromJson(Map<String, dynamic> json) = _$BreedImpl.fromJson;
 
   @override
-  String get breed;
+  String get name;
   @override
   List<String> get subBreeds;
   @override
