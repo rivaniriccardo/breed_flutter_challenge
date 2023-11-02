@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:breed_flutter_challenge/feature/breed_images/repo/breed_images_repo.dart';
+import 'package:breed_flutter_challenge/feature/subbreed_images/repo/subbreed_images_repo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -20,7 +20,7 @@ class SubBreedImagesBloc
     });
   }
 
-  final BreedImagesRepo breedImagesRepo;
+  final SubBreedImagesRepo breedImagesRepo;
 
   Future _fetch(
     _Fetch event,
@@ -28,7 +28,10 @@ class SubBreedImagesBloc
   ) async {
     emit(const SubBreedImagesState.loading());
     try {
-      final imgs = await breedImagesRepo.getBreedImages(event.breedName);
+      final imgs = await breedImagesRepo.getSubBreedImages(
+        event.breedName,
+        event.subBreedName,
+      );
       emit(
         SubBreedImagesState.loaded(
           imgs: imgs,

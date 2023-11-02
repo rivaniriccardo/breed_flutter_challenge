@@ -67,7 +67,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i11.SubBreedBloc>(
       () => _i11.SubBreedBloc(breedRepo: gh<_i6.SubBreedRepo>()));
   gh.factory<_i12.SubBreedImagesBloc>(() =>
-      _i12.SubBreedImagesBloc(breedImagesRepo: gh<_i8.BreedImagesRepo>()));
+      _i12.SubBreedImagesBloc(breedImagesRepo: gh<_i5.SubBreedImagesRepo>()));
   gh.factory<_i13.SubBreedsBloc>(
       () => _i13.SubBreedsBloc(breedsRepo: gh<_i7.SubBreedsRepo>()));
   gh.factory<_i14.BreedBloc>(
