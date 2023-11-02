@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 
 class BreedRandomImage extends StatelessWidget {
   const BreedRandomImage({
-    required this.breedName,
     required this.imageUrl,
     required this.onPressed,
     super.key,
   });
 
-  final String breedName;
   final String imageUrl;
   final VoidCallback onPressed;
 
@@ -16,10 +14,10 @@ class BreedRandomImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text('Random image of $breedName',
-              style: const TextStyle(
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text('Random image',
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               )),

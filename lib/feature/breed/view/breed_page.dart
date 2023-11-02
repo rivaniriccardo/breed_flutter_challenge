@@ -63,7 +63,6 @@ class BreedDetail extends StatelessWidget {
         Expanded(
           child: BreedRandomImage(
             imageUrl: imageUrl,
-            breedName: breedName,
             onPressed: () => context.read<BreedBloc>().add(
                   BreedEvent.reFetch(breedName),
                 ),
