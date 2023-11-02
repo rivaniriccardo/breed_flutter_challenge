@@ -3,6 +3,7 @@ import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
 import 'package:breed_flutter_challenge/feature/common/breed_random_image.dart';
 import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
 import 'package:breed_flutter_challenge/feature/subbreed/bloc/subbreed_bloc.dart';
+import 'package:breed_flutter_challenge/feature/subbreed_images/view/subbreed_images_page.dart';
 
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
@@ -85,13 +86,13 @@ class BreedDetail extends StatelessWidget {
         ),
         CardListItem(
           title: 'Gallery of $subBreedName',
-          onPressed: () => {},
-          // onPressed: () => Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => SubBreedImagesPage(breedName: breedName),
-          //   ),
-          // ),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SubBreedImagesPage(
+                  breedName: breedName, subBreedName: subBreedName),
+            ),
+          ),
         ),
       ],
     );

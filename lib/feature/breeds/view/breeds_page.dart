@@ -2,6 +2,7 @@ import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/breed/view/breed_page.dart';
 import 'package:breed_flutter_challenge/feature/breeds/bloc/breeds_bloc.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
+import 'package:breed_flutter_challenge/feature/common/breed_random_image.dart';
 import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
@@ -49,49 +50,57 @@ class BreedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text('Random image of all breeds',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              )),
-        ),
         Expanded(
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
+          child: BreedRandomImage(
+            imageUrl: imageUrl,
+            onPressed: () => context.read<BreedsBloc>().add(
+                  const BreedsEvent.fetchRandomImage(),
                 ),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Image.network(
-                        imageUrl,
-                        width: MediaQuery.of(context).size.width,
-                        height: 300,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: 16,
-                right: 16,
-                child: ElevatedButton(
-                  onPressed: () {
-                    context.read<BreedsBloc>().add(
-                          const BreedsEvent.fetchRandomImage(),
-                        );
-                  },
-                  child: const Icon(Icons.refresh),
-                ),
-              ),
-            ],
           ),
         ),
+        // const Padding(
+        //   padding: EdgeInsets.all(8.0),
+        //   child: Text('Random image of all breeds',
+        //       style: TextStyle(
+        //         fontWeight: FontWeight.bold,
+        //         fontSize: 20,
+        //       )),
+        // ),
+        // Expanded(
+        //   child: Stack(
+        //     children: [
+        //       Padding(
+        //         padding: const EdgeInsets.symmetric(
+        //           horizontal: 8.0,
+        //         ),
+        //         child: Column(
+        //           children: [
+        //             Expanded(
+        //               child: Image.network(
+        //                 imageUrl,
+        //                 width: MediaQuery.of(context).size.width,
+        //                 height: 300,
+        //                 fit: BoxFit.cover,
+        //               ),
+        //             ),
+        //           ],
+        //         ),
+        //       ),
+        //       Positioned(
+        //         bottom: 16,
+        //         right: 16,
+        //         child: ElevatedButton(
+        //           onPressed: () {
+        //             context.read<BreedsBloc>().add(
+        //                   const BreedsEvent.fetchRandomImage(),
+        //                 );
+        //           },
+        //           child: const Icon(Icons.refresh),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Text('Breeds',
