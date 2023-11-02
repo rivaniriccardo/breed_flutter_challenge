@@ -15,6 +15,7 @@ class BreedBloc extends Bloc<BreedEvent, BreedState> {
     on<BreedEvent>((event, emit) async {
       await event.map(
         fetch: (event) => _fetch(event, emit),
+        reFetch: (event) => _reFetch(event, emit),
       );
     });
   }
@@ -33,6 +34,21 @@ class BreedBloc extends Bloc<BreedEvent, BreedState> {
       );
     } catch (e) {
       emit(const BreedState.error());
+    }
+  }
+
+  Future _reFetch(
+    _ReFetch event,
+    Emitter<BreedState> emit,
+  ) async {
+    final currState = state;
+    if (currState is _Loaded) {
+      try {
+        final imageUrl = await breedRepo.getBreedRandomImage(event.breedName);
+        emit(currState.copyWith(imageUrl: imageUrl));
+      } catch (e) {
+        emit(const BreedState.error());
+      }
     }
   }
 }

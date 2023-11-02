@@ -2,6 +2,7 @@ import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/breed/bloc/breed_bloc.dart';
 import 'package:breed_flutter_challenge/feature/breed_images/view/breed_images_page.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
+import 'package:breed_flutter_challenge/feature/subbreeds/view/subbreeds_page.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,6 @@ class BreedPage extends StatelessWidget {
               loading: (state) => const AppLoading(),
               loaded: (state) => BreedDetail(
                 imageUrl: state.imageUrl,
-                subBreeds: breed.subBreeds,
                 breedName: breed.name,
               ),
               error: (state) => BreedError(
@@ -46,13 +46,11 @@ class BreedPage extends StatelessWidget {
 
 class BreedDetail extends StatelessWidget {
   const BreedDetail({
-    required this.subBreeds,
     required this.imageUrl,
     required this.breedName,
     super.key,
   });
 
-  final List<String> subBreeds;
   final String imageUrl;
   final String breedName;
 
@@ -94,7 +92,7 @@ class BreedDetail extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     context.read<BreedBloc>().add(
-                          BreedEvent.fetch(breedName),
+                          BreedEvent.reFetch(breedName),
                         );
                   },
                   child: const Icon(Icons.refresh),
@@ -127,24 +125,21 @@ class BreedDetail extends StatelessWidget {
         ),
         Card(
           child: ListTile(
-            title: Text(
-              'Sub-breeds: ${subBreeds.length}',
-              style: const TextStyle(
+            title: const Text(
+              'Sub-breeds',
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            trailing: subBreeds.isEmpty
-                ? null
-                : ElevatedButton(
-                    onPressed: null,
-                    // onPressed: () => Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => SubBreedsPage(breed: breed),
-                    //   ),
-                    // ),
-                    child: const Text('View'),
-                  ),
+            trailing: ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SubBreedsPage(breedName: breedName),
+                ),
+              ),
+              child: const Text('View'),
+            ),
           ),
         ),
       ],

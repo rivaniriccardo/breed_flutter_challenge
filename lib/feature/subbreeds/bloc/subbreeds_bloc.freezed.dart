@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'breed_bloc.dart';
+part of 'subbreeds_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,65 +15,59 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$BreedEvent {
+mixin _$SubBreedsEvent {
   String get breedName => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String breedName) fetch,
-    required TResult Function(String breedName) reFetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String breedName)? fetch,
-    TResult? Function(String breedName)? reFetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String breedName)? fetch,
-    TResult Function(String breedName)? reFetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
-    required TResult Function(_ReFetch value) reFetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_ReFetch value)? reFetch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
-    TResult Function(_ReFetch value)? reFetch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $BreedEventCopyWith<BreedEvent> get copyWith =>
+  $SubBreedsEventCopyWith<SubBreedsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BreedEventCopyWith<$Res> {
-  factory $BreedEventCopyWith(
-          BreedEvent value, $Res Function(BreedEvent) then) =
-      _$BreedEventCopyWithImpl<$Res, BreedEvent>;
+abstract class $SubBreedsEventCopyWith<$Res> {
+  factory $SubBreedsEventCopyWith(
+          SubBreedsEvent value, $Res Function(SubBreedsEvent) then) =
+      _$SubBreedsEventCopyWithImpl<$Res, SubBreedsEvent>;
   @useResult
   $Res call({String breedName});
 }
 
 /// @nodoc
-class _$BreedEventCopyWithImpl<$Res, $Val extends BreedEvent>
-    implements $BreedEventCopyWith<$Res> {
-  _$BreedEventCopyWithImpl(this._value, this._then);
+class _$SubBreedsEventCopyWithImpl<$Res, $Val extends SubBreedsEvent>
+    implements $SubBreedsEventCopyWith<$Res> {
+  _$SubBreedsEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +89,8 @@ class _$BreedEventCopyWithImpl<$Res, $Val extends BreedEvent>
 }
 
 /// @nodoc
-abstract class _$$FetchImplCopyWith<$Res> implements $BreedEventCopyWith<$Res> {
+abstract class _$$FetchImplCopyWith<$Res>
+    implements $SubBreedsEventCopyWith<$Res> {
   factory _$$FetchImplCopyWith(
           _$FetchImpl value, $Res Function(_$FetchImpl) then) =
       __$$FetchImplCopyWithImpl<$Res>;
@@ -106,7 +101,7 @@ abstract class _$$FetchImplCopyWith<$Res> implements $BreedEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$FetchImplCopyWithImpl<$Res>
-    extends _$BreedEventCopyWithImpl<$Res, _$FetchImpl>
+    extends _$SubBreedsEventCopyWithImpl<$Res, _$FetchImpl>
     implements _$$FetchImplCopyWith<$Res> {
   __$$FetchImplCopyWithImpl(
       _$FetchImpl _value, $Res Function(_$FetchImpl) _then)
@@ -136,7 +131,7 @@ class _$FetchImpl implements _Fetch {
 
   @override
   String toString() {
-    return 'BreedEvent.fetch(breedName: $breedName)';
+    return 'SubBreedsEvent.fetch(breedName: $breedName)';
   }
 
   @override
@@ -161,7 +156,6 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String breedName) fetch,
-    required TResult Function(String breedName) reFetch,
   }) {
     return fetch(breedName);
   }
@@ -170,7 +164,6 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String breedName)? fetch,
-    TResult? Function(String breedName)? reFetch,
   }) {
     return fetch?.call(breedName);
   }
@@ -179,7 +172,6 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String breedName)? fetch,
-    TResult Function(String breedName)? reFetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -192,7 +184,6 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetch value) fetch,
-    required TResult Function(_ReFetch value) reFetch,
   }) {
     return fetch(this);
   }
@@ -201,7 +192,6 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_ReFetch value)? reFetch,
   }) {
     return fetch?.call(this);
   }
@@ -210,7 +200,6 @@ class _$FetchImpl implements _Fetch {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetch value)? fetch,
-    TResult Function(_ReFetch value)? reFetch,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -220,7 +209,7 @@ class _$FetchImpl implements _Fetch {
   }
 }
 
-abstract class _Fetch implements BreedEvent {
+abstract class _Fetch implements SubBreedsEvent {
   const factory _Fetch(final String breedName) = _$FetchImpl;
 
   @override
@@ -232,163 +221,25 @@ abstract class _Fetch implements BreedEvent {
 }
 
 /// @nodoc
-abstract class _$$ReFetchImplCopyWith<$Res>
-    implements $BreedEventCopyWith<$Res> {
-  factory _$$ReFetchImplCopyWith(
-          _$ReFetchImpl value, $Res Function(_$ReFetchImpl) then) =
-      __$$ReFetchImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String breedName});
-}
-
-/// @nodoc
-class __$$ReFetchImplCopyWithImpl<$Res>
-    extends _$BreedEventCopyWithImpl<$Res, _$ReFetchImpl>
-    implements _$$ReFetchImplCopyWith<$Res> {
-  __$$ReFetchImplCopyWithImpl(
-      _$ReFetchImpl _value, $Res Function(_$ReFetchImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? breedName = null,
-  }) {
-    return _then(_$ReFetchImpl(
-      null == breedName
-          ? _value.breedName
-          : breedName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ReFetchImpl implements _ReFetch {
-  const _$ReFetchImpl(this.breedName);
-
-  @override
-  final String breedName;
-
-  @override
-  String toString() {
-    return 'BreedEvent.reFetch(breedName: $breedName)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ReFetchImpl &&
-            (identical(other.breedName, breedName) ||
-                other.breedName == breedName));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, breedName);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ReFetchImplCopyWith<_$ReFetchImpl> get copyWith =>
-      __$$ReFetchImplCopyWithImpl<_$ReFetchImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String breedName) fetch,
-    required TResult Function(String breedName) reFetch,
-  }) {
-    return reFetch(breedName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String breedName)? fetch,
-    TResult? Function(String breedName)? reFetch,
-  }) {
-    return reFetch?.call(breedName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String breedName)? fetch,
-    TResult Function(String breedName)? reFetch,
-    required TResult orElse(),
-  }) {
-    if (reFetch != null) {
-      return reFetch(breedName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetch value) fetch,
-    required TResult Function(_ReFetch value) reFetch,
-  }) {
-    return reFetch(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetch value)? fetch,
-    TResult? Function(_ReFetch value)? reFetch,
-  }) {
-    return reFetch?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Fetch value)? fetch,
-    TResult Function(_ReFetch value)? reFetch,
-    required TResult orElse(),
-  }) {
-    if (reFetch != null) {
-      return reFetch(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ReFetch implements BreedEvent {
-  const factory _ReFetch(final String breedName) = _$ReFetchImpl;
-
-  @override
-  String get breedName;
-  @override
-  @JsonKey(ignore: true)
-  _$$ReFetchImplCopyWith<_$ReFetchImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$BreedState {
+mixin _$SubBreedsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -418,16 +269,16 @@ mixin _$BreedState {
 }
 
 /// @nodoc
-abstract class $BreedStateCopyWith<$Res> {
-  factory $BreedStateCopyWith(
-          BreedState value, $Res Function(BreedState) then) =
-      _$BreedStateCopyWithImpl<$Res, BreedState>;
+abstract class $SubBreedsStateCopyWith<$Res> {
+  factory $SubBreedsStateCopyWith(
+          SubBreedsState value, $Res Function(SubBreedsState) then) =
+      _$SubBreedsStateCopyWithImpl<$Res, SubBreedsState>;
 }
 
 /// @nodoc
-class _$BreedStateCopyWithImpl<$Res, $Val extends BreedState>
-    implements $BreedStateCopyWith<$Res> {
-  _$BreedStateCopyWithImpl(this._value, this._then);
+class _$SubBreedsStateCopyWithImpl<$Res, $Val extends SubBreedsState>
+    implements $SubBreedsStateCopyWith<$Res> {
+  _$SubBreedsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -444,7 +295,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$BreedStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$SubBreedsStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -458,7 +309,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'BreedState.loading()';
+    return 'SubBreedsState.loading()';
   }
 
   @override
@@ -474,7 +325,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -484,7 +335,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -494,7 +345,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -539,7 +390,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements BreedState {
+abstract class _Loading implements SubBreedsState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -549,12 +400,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String imageUrl});
+  $Res call({List<Breed> breeds});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$BreedStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$SubBreedsStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -563,13 +414,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = null,
+    Object? breeds = null,
   }) {
     return _then(_$LoadedImpl(
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      breeds: null == breeds
+          ? _value._breeds
+          : breeds // ignore: cast_nullable_to_non_nullable
+              as List<Breed>,
     ));
   }
 }
@@ -577,14 +428,19 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.imageUrl});
+  const _$LoadedImpl({required final List<Breed> breeds}) : _breeds = breeds;
 
+  final List<Breed> _breeds;
   @override
-  final String imageUrl;
+  List<Breed> get breeds {
+    if (_breeds is EqualUnmodifiableListView) return _breeds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_breeds);
+  }
 
   @override
   String toString() {
-    return 'BreedState.loaded(imageUrl: $imageUrl)';
+    return 'SubBreedsState.loaded(breeds: $breeds)';
   }
 
   @override
@@ -592,12 +448,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+            const DeepCollectionEquality().equals(other._breeds, _breeds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_breeds));
 
   @JsonKey(ignore: true)
   @override
@@ -609,32 +465,32 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) {
-    return loaded(imageUrl);
+    return loaded(breeds);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) {
-    return loaded?.call(imageUrl);
+    return loaded?.call(breeds);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(imageUrl);
+      return loaded(breeds);
     }
     return orElse();
   }
@@ -674,10 +530,10 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements BreedState {
-  const factory _Loaded({required final String imageUrl}) = _$LoadedImpl;
+abstract class _Loaded implements SubBreedsState {
+  const factory _Loaded({required final List<Breed> breeds}) = _$LoadedImpl;
 
-  String get imageUrl;
+  List<Breed> get breeds;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -692,7 +548,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$BreedStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$SubBreedsStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -706,7 +562,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'BreedState.error()';
+    return 'SubBreedsState.error()';
   }
 
   @override
@@ -722,7 +578,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<Breed> breeds) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -732,7 +588,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<Breed> breeds)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -742,7 +598,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<Breed> breeds)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -787,6 +643,6 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements BreedState {
+abstract class _Error implements SubBreedsState {
   const factory _Error() = _$ErrorImpl;
 }
