@@ -1,5 +1,7 @@
 import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
+import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
+import 'package:breed_flutter_challenge/feature/subbreed/view/subbreed_page.dart';
 import 'package:breed_flutter_challenge/feature/subbreeds/bloc/subbreeds_bloc.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,8 @@ class SubBreedsPage extends StatelessWidget {
             return state.map(
               loading: (state) => const AppLoading(),
               loaded: (state) => SubBreedsList(
-                breeds: state.breeds,
+                subBreeds: state.breeds,
+                breedName: breedName,
               ),
               error: (state) => BreedsError(breedName: breedName),
             );
@@ -37,11 +40,13 @@ class SubBreedsPage extends StatelessWidget {
 
 class SubBreedsList extends StatelessWidget {
   const SubBreedsList({
-    required this.breeds,
+    required this.subBreeds,
+    required this.breedName,
     super.key,
   });
 
-  final List<Breed> breeds;
+  final List<Breed> subBreeds;
+  final String breedName;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,8 @@ class SubBreedsList extends StatelessWidget {
       children: [
         Expanded(
           child: SubBreedsListWidget(
-            breeds: breeds,
+            subBreeds: subBreeds,
+            breedName: breedName,
           ),
         ),
       ],
@@ -59,15 +65,17 @@ class SubBreedsList extends StatelessWidget {
 
 class SubBreedsListWidget extends StatelessWidget {
   const SubBreedsListWidget({
-    required this.breeds,
+    required this.breedName,
+    required this.subBreeds,
     super.key,
   });
 
-  final List<Breed> breeds;
+  final String breedName;
+  final List<Breed> subBreeds;
 
   @override
   Widget build(BuildContext context) {
-    return breeds.isEmpty
+    return subBreeds.isEmpty
         ? const Center(
             child: Text("No sub-breeds found",
                 style: TextStyle(
@@ -75,20 +83,18 @@ class SubBreedsListWidget extends StatelessWidget {
                   fontSize: 20,
                 )))
         : ListView.builder(
-            itemCount: breeds.length,
+            itemCount: subBreeds.length,
             itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(breeds[index].name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      )),
-                  // onTap: () => Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => SubBreedPage(breed: breeds[index]),
-                  //   ),
-                  // ),
+              return CardListItem(
+                title: subBreeds[index].name,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SubBreedPage(
+                      subBreed: subBreeds[index],
+                      breedName: breedName,
+                    ),
+                  ),
                 ),
               );
             },

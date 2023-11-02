@@ -1,42 +1,49 @@
 import 'package:breed_flutter_challenge/core/di/injections.dart';
-import 'package:breed_flutter_challenge/feature/breed/bloc/breed_bloc.dart';
-import 'package:breed_flutter_challenge/feature/breed_images/view/breed_images_page.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
 import 'package:breed_flutter_challenge/feature/common/breed_random_image.dart';
 import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
-import 'package:breed_flutter_challenge/feature/subbreeds/view/subbreeds_page.dart';
+import 'package:breed_flutter_challenge/feature/subbreed/bloc/subbreed_bloc.dart';
+
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BreedPage extends StatelessWidget {
-  const BreedPage({required this.breed, super.key});
+class SubBreedPage extends StatelessWidget {
+  const SubBreedPage({
+    required this.breedName,
+    required this.subBreed,
+    super.key,
+  });
 
-  final Breed breed;
+  final Breed subBreed;
+  final String breedName;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<BreedBloc>()
+      create: (context) => getIt<SubBreedBloc>()
         ..add(
-          BreedEvent.fetch(
-            breed.name,
+          SubBreedEvent.fetch(
+            breedName,
+            subBreed.name,
           ),
         ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Breed: ${breed.name}'),
+          title: Text('Sub-breed: ${subBreed.name}'),
         ),
-        body: BlocBuilder<BreedBloc, BreedState>(
+        body: BlocBuilder<SubBreedBloc, SubBreedState>(
           builder: (context, state) {
             return state.map(
               loading: (state) => const AppLoading(),
               loaded: (state) => BreedDetail(
                 imageUrl: state.imageUrl,
-                breedName: breed.name,
+                breedName: breedName,
+                subBreedName: subBreed.name,
               ),
               error: (state) => BreedError(
-                breedName: breed.name,
+                breedName: breedName,
+                subBreedName: subBreed.name,
               ),
             );
           },
@@ -50,11 +57,13 @@ class BreedDetail extends StatelessWidget {
   const BreedDetail({
     required this.imageUrl,
     required this.breedName,
+    required this.subBreedName,
     super.key,
   });
 
   final String imageUrl;
   final String breedName;
+  final String subBreedName;
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +72,12 @@ class BreedDetail extends StatelessWidget {
         Expanded(
           child: BreedRandomImage(
             imageUrl: imageUrl,
-            breedName: breedName,
-            onPressed: () => context.read<BreedBloc>().add(
-                  BreedEvent.reFetch(breedName),
+            breedName: subBreedName,
+            onPressed: () => context.read<SubBreedBloc>().add(
+                  SubBreedEvent.reFetch(
+                    breedName,
+                    subBreedName,
+                  ),
                 ),
           ),
         ),
@@ -73,22 +85,14 @@ class BreedDetail extends StatelessWidget {
           height: 16,
         ),
         CardListItem(
-          title: 'Gallery of $breedName',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => BreedImagesPage(breedName: breedName),
-            ),
-          ),
-        ),
-        CardListItem(
-          title: 'Sub-breeds',
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SubBreedsPage(breedName: breedName),
-            ),
-          ),
+          title: 'Gallery of $subBreedName',
+          onPressed: () => {},
+          // onPressed: () => Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => SubBreedImagesPage(breedName: breedName),
+          //   ),
+          // ),
         ),
       ],
     );
@@ -98,10 +102,12 @@ class BreedDetail extends StatelessWidget {
 class BreedError extends StatelessWidget {
   const BreedError({
     required this.breedName,
+    required this.subBreedName,
     Key? key,
   }) : super(key: key);
 
   final String breedName;
+  final String subBreedName;
 
   @override
   Widget build(BuildContext context) {
@@ -114,8 +120,11 @@ class BreedError extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              context.read<BreedBloc>().add(
-                    BreedEvent.fetch(breedName),
+              context.read<SubBreedBloc>().add(
+                    SubBreedEvent.fetch(
+                      breedName,
+                      subBreedName,
+                    ),
                   );
             },
             child: const Text('Retry'),

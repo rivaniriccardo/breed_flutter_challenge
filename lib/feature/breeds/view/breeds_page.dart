@@ -2,6 +2,7 @@ import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/breed/view/breed_page.dart';
 import 'package:breed_flutter_challenge/feature/breeds/bloc/breeds_bloc.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
+import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -122,20 +123,13 @@ class BreedsList extends StatelessWidget {
     return ListView.builder(
       itemCount: breeds.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            title: Text('Breed name: ${breeds[index].name}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                )),
-            subtitle: Text(
-              'Sub-breeds: ${breeds[index].subBreeds.length}',
-            ),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => BreedPage(breed: breeds[index]),
-              ),
+        return CardListItem(
+          title: 'Breed name: ${breeds[index].name}',
+          subtitle: 'Sub-breeds: ${breeds[index].subBreeds.length}',
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BreedPage(breed: breeds[index]),
             ),
           ),
         );
