@@ -134,7 +134,7 @@ class BreedsList extends StatelessWidget {
       itemBuilder: (context, index) {
         return CardListItem(
           title: 'Breed name: ${breeds[index].name}',
-          subtitle: 'Sub-breeds: ${breeds[index].subBreeds.length}',
+          subtitle: 'Sub breeds: ${breeds[index].subBreeds.length}',
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(

@@ -31,7 +31,7 @@ class SubBreedPage extends StatelessWidget {
         ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Sub-breed: $breedName/${subBreed.name}'),
+          title: Text('Sub breed: $breedName/${subBreed.name}'),
         ),
         body: BlocBuilder<SubBreedBloc, SubBreedState>(
           builder: (context, state) {

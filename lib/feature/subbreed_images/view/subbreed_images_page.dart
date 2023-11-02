@@ -26,7 +26,7 @@ class SubBreedImagesPage extends StatelessWidget {
         ),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Sub-breed: $breedName/$subBreedName'),
+          title: Text('Sub breed: $breedName/$subBreedName'),
         ),
         body: BlocBuilder<SubBreedImagesBloc, SubBreedImagesState>(
           builder: (context, state) {

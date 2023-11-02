@@ -81,7 +81,7 @@ class BreedDetail extends StatelessWidget {
           ),
         ),
         CardListItem(
-          title: 'Sub-breeds',
+          title: 'Sub breeds',
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(

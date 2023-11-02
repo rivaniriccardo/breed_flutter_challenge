@@ -19,7 +19,7 @@ class SubBreedsPage extends StatelessWidget {
           getIt<SubBreedsBloc>()..add(SubBreedsEvent.fetch(breedName)),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Sub-Breeds'),
+          title: const Text('Sub Breeds'),
         ),
         body: BlocBuilder<SubBreedsBloc, SubBreedsState>(
           builder: (context, state) {
@@ -77,7 +77,7 @@ class SubBreedsListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return subBreeds.isEmpty
         ? const Center(
-            child: Text("No sub-breeds found",
+            child: Text("No sub breeds found",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
@@ -117,7 +117,7 @@ class BreedsError extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Error fetching sub-breeds',
+            'Error fetching sub breeds',
           ),
           ElevatedButton(
             onPressed: () {
