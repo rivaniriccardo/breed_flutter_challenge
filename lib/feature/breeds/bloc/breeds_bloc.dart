@@ -54,7 +54,7 @@ class BreedsBloc extends Bloc<BreedsEvent, BreedsState> {
         final imageUrl = await breedsRepo.getBreedsRandomImage();
         emit(currState.copyWith(imageUrl: imageUrl));
       } catch (e) {
-        emit(const BreedsState.error());
+        emit(const _Error());
       }
     }
   }

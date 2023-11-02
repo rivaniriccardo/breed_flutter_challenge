@@ -46,11 +46,6 @@ class BreedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Ritorna un componente che mostra un'immagine con imageUrl e la lista delle breeds (BreedsList)
-    // L'immagine deve essere larga come lo schermo
-    // La lista delle breeds deve occupare lo spazio rimanente
-    // Insieme all'immagine metti un pulsante per rigenerare l'immagine che scatena l'evento BreedsEvent.fetchRandomImage
-
     return Column(
       children: [
         const Padding(

@@ -1,5 +1,6 @@
 import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/breed/bloc/breed_bloc.dart';
+import 'package:breed_flutter_challenge/feature/breed_images/view/breed_images_page.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class BreedPage extends StatelessWidget {
       create: (context) => getIt<BreedBloc>()
         ..add(
           BreedEvent.fetch(
-            breed,
+            breed.name,
           ),
         ),
       child: Scaffold(
@@ -28,11 +29,12 @@ class BreedPage extends StatelessWidget {
             return state.map(
               loading: (state) => const AppLoading(),
               loaded: (state) => BreedDetail(
-                images: state.imgs,
+                imageUrl: state.imageUrl,
                 subBreeds: breed.subBreeds,
+                breedName: breed.name,
               ),
               error: (state) => BreedError(
-                breed: breed,
+                breedName: breed.name,
               ),
             );
           },
@@ -45,20 +47,84 @@ class BreedPage extends StatelessWidget {
 class BreedDetail extends StatelessWidget {
   const BreedDetail({
     required this.subBreeds,
-    required this.images,
+    required this.imageUrl,
+    required this.breedName,
     super.key,
   });
 
   final List<String> subBreeds;
-  final List<String> images;
+  final String imageUrl;
+  final String breedName;
 
   @override
   Widget build(BuildContext context) {
-    // Ritorna una card dove viene mostrato il numero di sottorazze
-    // e un pulsante per navigare lla pagina con l'elenco delle sottorazze
-    // Poi subito dopo l'elenco delle immagini della razza
-    return ListView(
+    return Column(
       children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('Random image of $breedName',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              )),
+        ),
+        Expanded(
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Image.network(
+                        imageUrl,
+                        width: MediaQuery.of(context).size.width,
+                        height: 300,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                bottom: 16,
+                right: 16,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<BreedBloc>().add(
+                          BreedEvent.fetch(breedName),
+                        );
+                  },
+                  child: const Icon(Icons.refresh),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Card(
+          child: ListTile(
+            title: Text(
+              'Gallery of $breedName',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            trailing: ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BreedImagesPage(breedName: breedName),
+                ),
+              ),
+              child: const Text('View'),
+            ),
+          ),
+        ),
         Card(
           child: ListTile(
             title: Text(
@@ -70,80 +136,29 @@ class BreedDetail extends StatelessWidget {
             trailing: subBreeds.isEmpty
                 ? null
                 : ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(
-                        '/sub-breeds',
-                        arguments: subBreeds,
-                      );
-                    },
+                    onPressed: null,
+                    // onPressed: () => Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => SubBreedsPage(breed: breed),
+                    //   ),
+                    // ),
                     child: const Text('View'),
                   ),
           ),
         ),
-        GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: images.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
-          itemBuilder: (context, index) {
-            return Card(
-              child: Image.network(
-                images[index],
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Image.network(
-                    images[index],
-                    fit: BoxFit.cover,
-                  );
-                },
-              ),
-            );
-          },
-        ),
       ],
     );
-
-    // return GridView.builder(
-    //   itemCount: images.length,
-    //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-    //     crossAxisCount: 2,
-    //   ),
-    //   itemBuilder: (context, index) {
-    //     return Card(
-    //       child: Image.network(
-    //         images[index],
-    //         fit: BoxFit.cover,
-    //       ),
-    //     );
-    //   },
-    // );
-    // return ListView.builder(
-    //   itemCount: subBreeds.length,
-    //   itemBuilder: (context, index) {
-    //     return Card(
-    //       child: ListTile(
-    //         title: Text(
-    //           'Sub-breed name: ${subBreeds[index]}',
-    //           style: const TextStyle(
-    //             fontWeight: FontWeight.bold,
-    //           ),
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // );
   }
 }
 
 class BreedError extends StatelessWidget {
   const BreedError({
-    required this.breed,
+    required this.breedName,
     Key? key,
   }) : super(key: key);
 
-  final Breed breed;
+  final String breedName;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +172,7 @@ class BreedError extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               context.read<BreedBloc>().add(
-                    BreedEvent.fetch(breed),
+                    BreedEvent.fetch(breedName),
                   );
             },
             child: const Text('Retry'),

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:breed_flutter_challenge/feature/breed/repo/breed_repo.dart';
-import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -28,11 +27,9 @@ class BreedBloc extends Bloc<BreedEvent, BreedState> {
   ) async {
     emit(const BreedState.loading());
     try {
-      final imgs = await breedRepo.getBreedImages(event.breed.name);
+      final imageUrl = await breedRepo.getBreedRandomImage(event.breedName);
       emit(
-        BreedState.loaded(
-          imgs: imgs,
-        ),
+        BreedState.loaded(imageUrl: imageUrl),
       );
     } catch (e) {
       emit(const BreedState.error());

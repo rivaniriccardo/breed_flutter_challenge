@@ -4,16 +4,16 @@ import 'package:breed_flutter_challenge/utils/utils.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class BreedRepo {
-  BreedRepo({
+class BreedImagesRepo {
+  BreedImagesRepo({
     required this.restClient,
   });
 
   final RestClient restClient;
 
-  Future<String> getBreedRandomImage(String breedName) async {
+  Future<List<String>> getBreedImages(String breedName) async {
     final response = await restClient.get(
-      api: '/$breedName/images/random',
+      api: '/$breedName/images',
       endpoint: 'https://dog.ceo/api/breed',
     );
 
@@ -21,8 +21,12 @@ class BreedRepo {
       response.body,
     );
 
-    final imageUrl = decoded['message'];
+    final imgs = List<String>.from(
+      decoded['message'].map(
+        (img) => img,
+      ),
+    );
 
-    return imageUrl;
+    return imgs;
   }
 }

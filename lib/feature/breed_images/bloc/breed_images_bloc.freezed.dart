@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'breed_bloc.dart';
+part of 'breed_images_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$BreedEvent {
+mixin _$BreedImagesEvent {
   String get breedName => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -51,23 +51,23 @@ mixin _$BreedEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $BreedEventCopyWith<BreedEvent> get copyWith =>
+  $BreedImagesEventCopyWith<BreedImagesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BreedEventCopyWith<$Res> {
-  factory $BreedEventCopyWith(
-          BreedEvent value, $Res Function(BreedEvent) then) =
-      _$BreedEventCopyWithImpl<$Res, BreedEvent>;
+abstract class $BreedImagesEventCopyWith<$Res> {
+  factory $BreedImagesEventCopyWith(
+          BreedImagesEvent value, $Res Function(BreedImagesEvent) then) =
+      _$BreedImagesEventCopyWithImpl<$Res, BreedImagesEvent>;
   @useResult
   $Res call({String breedName});
 }
 
 /// @nodoc
-class _$BreedEventCopyWithImpl<$Res, $Val extends BreedEvent>
-    implements $BreedEventCopyWith<$Res> {
-  _$BreedEventCopyWithImpl(this._value, this._then);
+class _$BreedImagesEventCopyWithImpl<$Res, $Val extends BreedImagesEvent>
+    implements $BreedImagesEventCopyWith<$Res> {
+  _$BreedImagesEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -89,7 +89,8 @@ class _$BreedEventCopyWithImpl<$Res, $Val extends BreedEvent>
 }
 
 /// @nodoc
-abstract class _$$FetchImplCopyWith<$Res> implements $BreedEventCopyWith<$Res> {
+abstract class _$$FetchImplCopyWith<$Res>
+    implements $BreedImagesEventCopyWith<$Res> {
   factory _$$FetchImplCopyWith(
           _$FetchImpl value, $Res Function(_$FetchImpl) then) =
       __$$FetchImplCopyWithImpl<$Res>;
@@ -100,7 +101,7 @@ abstract class _$$FetchImplCopyWith<$Res> implements $BreedEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$FetchImplCopyWithImpl<$Res>
-    extends _$BreedEventCopyWithImpl<$Res, _$FetchImpl>
+    extends _$BreedImagesEventCopyWithImpl<$Res, _$FetchImpl>
     implements _$$FetchImplCopyWith<$Res> {
   __$$FetchImplCopyWithImpl(
       _$FetchImpl _value, $Res Function(_$FetchImpl) _then)
@@ -130,7 +131,7 @@ class _$FetchImpl implements _Fetch {
 
   @override
   String toString() {
-    return 'BreedEvent.fetch(breedName: $breedName)';
+    return 'BreedImagesEvent.fetch(breedName: $breedName)';
   }
 
   @override
@@ -208,7 +209,7 @@ class _$FetchImpl implements _Fetch {
   }
 }
 
-abstract class _Fetch implements BreedEvent {
+abstract class _Fetch implements BreedImagesEvent {
   const factory _Fetch(final String breedName) = _$FetchImpl;
 
   @override
@@ -220,25 +221,25 @@ abstract class _Fetch implements BreedEvent {
 }
 
 /// @nodoc
-mixin _$BreedState {
+mixin _$BreedImagesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<String> imgs) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<String> imgs)? loaded,
     TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<String> imgs)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -268,16 +269,16 @@ mixin _$BreedState {
 }
 
 /// @nodoc
-abstract class $BreedStateCopyWith<$Res> {
-  factory $BreedStateCopyWith(
-          BreedState value, $Res Function(BreedState) then) =
-      _$BreedStateCopyWithImpl<$Res, BreedState>;
+abstract class $BreedImagesStateCopyWith<$Res> {
+  factory $BreedImagesStateCopyWith(
+          BreedImagesState value, $Res Function(BreedImagesState) then) =
+      _$BreedImagesStateCopyWithImpl<$Res, BreedImagesState>;
 }
 
 /// @nodoc
-class _$BreedStateCopyWithImpl<$Res, $Val extends BreedState>
-    implements $BreedStateCopyWith<$Res> {
-  _$BreedStateCopyWithImpl(this._value, this._then);
+class _$BreedImagesStateCopyWithImpl<$Res, $Val extends BreedImagesState>
+    implements $BreedImagesStateCopyWith<$Res> {
+  _$BreedImagesStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -294,7 +295,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$BreedStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$BreedImagesStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -308,7 +309,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'BreedState.loading()';
+    return 'BreedImagesState.loading()';
   }
 
   @override
@@ -324,7 +325,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<String> imgs) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -334,7 +335,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<String> imgs)? loaded,
     TResult? Function()? error,
   }) {
     return loading?.call();
@@ -344,7 +345,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<String> imgs)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -389,7 +390,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements BreedState {
+abstract class _Loading implements BreedImagesState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -399,12 +400,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String imageUrl});
+  $Res call({List<String> imgs});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$BreedStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$BreedImagesStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -413,13 +414,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? imageUrl = null,
+    Object? imgs = null,
   }) {
     return _then(_$LoadedImpl(
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imgs: null == imgs
+          ? _value._imgs
+          : imgs // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -427,14 +428,19 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.imageUrl});
+  const _$LoadedImpl({required final List<String> imgs}) : _imgs = imgs;
 
+  final List<String> _imgs;
   @override
-  final String imageUrl;
+  List<String> get imgs {
+    if (_imgs is EqualUnmodifiableListView) return _imgs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imgs);
+  }
 
   @override
   String toString() {
-    return 'BreedState.loaded(imageUrl: $imageUrl)';
+    return 'BreedImagesState.loaded(imgs: $imgs)';
   }
 
   @override
@@ -442,12 +448,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+            const DeepCollectionEquality().equals(other._imgs, _imgs));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, imageUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_imgs));
 
   @JsonKey(ignore: true)
   @override
@@ -459,32 +465,32 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<String> imgs) loaded,
     required TResult Function() error,
   }) {
-    return loaded(imageUrl);
+    return loaded(imgs);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<String> imgs)? loaded,
     TResult? Function()? error,
   }) {
-    return loaded?.call(imageUrl);
+    return loaded?.call(imgs);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<String> imgs)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(imageUrl);
+      return loaded(imgs);
     }
     return orElse();
   }
@@ -524,10 +530,10 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements BreedState {
-  const factory _Loaded({required final String imageUrl}) = _$LoadedImpl;
+abstract class _Loaded implements BreedImagesState {
+  const factory _Loaded({required final List<String> imgs}) = _$LoadedImpl;
 
-  String get imageUrl;
+  List<String> get imgs;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -542,7 +548,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$BreedStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$BreedImagesStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -556,7 +562,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'BreedState.error()';
+    return 'BreedImagesState.error()';
   }
 
   @override
@@ -572,7 +578,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(String imageUrl) loaded,
+    required TResult Function(List<String> imgs) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -582,7 +588,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String imageUrl)? loaded,
+    TResult? Function(List<String> imgs)? loaded,
     TResult? Function()? error,
   }) {
     return error?.call();
@@ -592,7 +598,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String imageUrl)? loaded,
+    TResult Function(List<String> imgs)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -637,6 +643,6 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements BreedState {
+abstract class _Error implements BreedImagesState {
   const factory _Error() = _$ErrorImpl;
 }
