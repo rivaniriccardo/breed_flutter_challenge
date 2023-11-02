@@ -2,6 +2,7 @@ import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
 import 'package:breed_flutter_challenge/feature/common/breed_random_image.dart';
 import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
+import 'package:breed_flutter_challenge/feature/common/fetch_error.dart';
 import 'package:breed_flutter_challenge/feature/subbreed/bloc/subbreed_bloc.dart';
 import 'package:breed_flutter_challenge/feature/subbreed_images/view/subbreed_images_page.dart';
 
@@ -42,9 +43,14 @@ class SubBreedPage extends StatelessWidget {
                 breedName: breedName,
                 subBreedName: subBreed.name,
               ),
-              error: (state) => BreedError(
-                breedName: breedName,
-                subBreedName: subBreed.name,
+              error: (state) => FetchError(
+                message: 'Error fetching sub breed',
+                onRetry: () => context.read<SubBreedBloc>().add(
+                      SubBreedEvent.fetch(
+                        breedName,
+                        subBreed.name,
+                      ),
+                    ),
               ),
             );
           },
@@ -95,42 +101,6 @@ class BreedDetail extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class BreedError extends StatelessWidget {
-  const BreedError({
-    required this.breedName,
-    required this.subBreedName,
-    Key? key,
-  }) : super(key: key);
-
-  final String breedName;
-  final String subBreedName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Error fetching breed',
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<SubBreedBloc>().add(
-                    SubBreedEvent.fetch(
-                      breedName,
-                      subBreedName,
-                    ),
-                  );
-            },
-            child: const Text('Retry'),
-          ),
-        ],
-      ),
     );
   }
 }

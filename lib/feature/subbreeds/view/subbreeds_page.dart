@@ -1,6 +1,7 @@
 import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
 import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
+import 'package:breed_flutter_challenge/feature/common/fetch_error.dart';
 import 'package:breed_flutter_challenge/feature/subbreed/view/subbreed_page.dart';
 import 'package:breed_flutter_challenge/feature/subbreeds/bloc/subbreeds_bloc.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
@@ -29,7 +30,12 @@ class SubBreedsPage extends StatelessWidget {
                 subBreeds: state.breeds,
                 breedName: breedName,
               ),
-              error: (state) => BreedsError(breedName: breedName),
+              error: (state) => FetchError(
+                message: 'Error fetching sub breeds',
+                onRetry: () => context.read<SubBreedsBloc>().add(
+                      SubBreedsEvent.fetch(breedName),
+                    ),
+              ),
             );
           },
         ),
@@ -99,36 +105,5 @@ class SubBreedsListWidget extends StatelessWidget {
               );
             },
           );
-  }
-}
-
-class BreedsError extends StatelessWidget {
-  const BreedsError({
-    required this.breedName,
-    Key? key,
-  }) : super(key: key);
-
-  final String breedName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Error fetching sub breeds',
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<SubBreedsBloc>().add(
-                    SubBreedsEvent.fetch(breedName),
-                  );
-            },
-            child: const Text('Retry'),
-          ),
-        ],
-      ),
-    );
   }
 }

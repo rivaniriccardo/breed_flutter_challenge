@@ -4,6 +4,7 @@ import 'package:breed_flutter_challenge/feature/breed_images/view/breed_images_p
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
 import 'package:breed_flutter_challenge/feature/common/breed_random_image.dart';
 import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
+import 'package:breed_flutter_challenge/feature/common/fetch_error.dart';
 import 'package:breed_flutter_challenge/feature/subbreeds/view/subbreeds_page.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +36,13 @@ class BreedPage extends StatelessWidget {
                 imageUrl: state.imageUrl,
                 breedName: breed.name,
               ),
-              error: (state) => BreedError(
-                breedName: breed.name,
+              error: (state) => FetchError(
+                message: 'Error fetching breed',
+                onRetry: () => context.read<BreedBloc>().add(
+                      BreedEvent.fetch(
+                        breed.name,
+                      ),
+                    ),
               ),
             );
           },
@@ -90,37 +96,6 @@ class BreedDetail extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class BreedError extends StatelessWidget {
-  const BreedError({
-    required this.breedName,
-    Key? key,
-  }) : super(key: key);
-
-  final String breedName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Error fetching breed',
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<BreedBloc>().add(
-                    BreedEvent.fetch(breedName),
-                  );
-            },
-            child: const Text('Retry'),
-          ),
-        ],
-      ),
     );
   }
 }

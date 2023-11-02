@@ -4,6 +4,7 @@ import 'package:breed_flutter_challenge/feature/breeds/bloc/breeds_bloc.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
 import 'package:breed_flutter_challenge/feature/common/breed_random_image.dart';
 import 'package:breed_flutter_challenge/feature/common/card_list_item.dart';
+import 'package:breed_flutter_challenge/feature/common/fetch_error.dart';
 import 'package:breed_flutter_challenge/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,12 @@ class BreedsPage extends StatelessWidget {
                 breeds: state.breeds,
                 imageUrl: state.imageUrl,
               ),
-              error: (state) => const BreedsError(),
+              error: (state) => FetchError(
+                message: 'Error fetching breeds',
+                onRetry: () => context.read<BreedsBloc>().add(
+                      const BreedsEvent.fetch(),
+                    ),
+              ),
             );
           },
         ),
@@ -58,49 +64,6 @@ class BreedWidget extends StatelessWidget {
                 ),
           ),
         ),
-        // const Padding(
-        //   padding: EdgeInsets.all(8.0),
-        //   child: Text('Random image of all breeds',
-        //       style: TextStyle(
-        //         fontWeight: FontWeight.bold,
-        //         fontSize: 20,
-        //       )),
-        // ),
-        // Expanded(
-        //   child: Stack(
-        //     children: [
-        //       Padding(
-        //         padding: const EdgeInsets.symmetric(
-        //           horizontal: 8.0,
-        //         ),
-        //         child: Column(
-        //           children: [
-        //             Expanded(
-        //               child: Image.network(
-        //                 imageUrl,
-        //                 width: MediaQuery.of(context).size.width,
-        //                 height: 300,
-        //                 fit: BoxFit.cover,
-        //               ),
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //       Positioned(
-        //         bottom: 16,
-        //         right: 16,
-        //         child: ElevatedButton(
-        //           onPressed: () {
-        //             context.read<BreedsBloc>().add(
-        //                   const BreedsEvent.fetchRandomImage(),
-        //                 );
-        //           },
-        //           child: const Icon(Icons.refresh),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Text('Breeds',
@@ -143,34 +106,6 @@ class BreedsList extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class BreedsError extends StatelessWidget {
-  const BreedsError({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Error fetching breeds',
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<BreedsBloc>().add(
-                    const BreedsEvent.fetch(),
-                  );
-            },
-            child: const Text('Retry'),
-          ),
-        ],
-      ),
     );
   }
 }

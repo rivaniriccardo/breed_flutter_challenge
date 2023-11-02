@@ -1,5 +1,6 @@
 import 'package:breed_flutter_challenge/core/di/injections.dart';
 import 'package:breed_flutter_challenge/feature/common/app_loading.dart';
+import 'package:breed_flutter_challenge/feature/common/fetch_error.dart';
 import 'package:breed_flutter_challenge/feature/subbreed_images/bloc/subbreed_images_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,9 +36,14 @@ class SubBreedImagesPage extends StatelessWidget {
               loaded: (state) => BreedGallery(
                 images: state.imgs,
               ),
-              error: (state) => BreedError(
-                breedName: breedName,
-                subBreedName: subBreedName,
+              error: (state) => FetchError(
+                message: 'Error fetching images',
+                onRetry: () => context.read<SubBreedImagesBloc>().add(
+                      SubBreedImagesEvent.fetch(
+                        breedName,
+                        subBreedName,
+                      ),
+                    ),
               ),
             );
           },
@@ -78,42 +84,6 @@ class BreedGallery extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class BreedError extends StatelessWidget {
-  const BreedError({
-    required this.breedName,
-    required this.subBreedName,
-    Key? key,
-  }) : super(key: key);
-
-  final String breedName;
-  final String subBreedName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Error fetching images',
-          ),
-          ElevatedButton(
-            onPressed: () {
-              context.read<SubBreedImagesBloc>().add(
-                    SubBreedImagesEvent.fetch(
-                      breedName,
-                      subBreedName,
-                    ),
-                  );
-            },
-            child: const Text('Retry'),
-          ),
-        ],
-      ),
     );
   }
 }
