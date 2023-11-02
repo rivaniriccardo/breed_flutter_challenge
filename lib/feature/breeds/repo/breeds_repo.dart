@@ -18,14 +18,12 @@ class BreedsRepo {
       endpoint: 'https://dog.ceo/api/breeds',
     );
 
-    final decodedBreeds = Breeds.fromJson(
-      jsonDecode(
-        response.body,
-      ),
+    final decoded = jsonDecode(
+      response.body,
     );
 
     final breeds = List<Breed>.from(
-      decodedBreeds.message.entries.map(
+      decoded['message'].entries.map(
         (entry) {
           return Breed(
             name: entry.key,
