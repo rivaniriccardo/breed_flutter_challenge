@@ -1,7 +1,5 @@
 # breed_flutter_challenge
 
-A new Flutter project.
-
 ## Getting Started
 
 This project is a coding challenge.
