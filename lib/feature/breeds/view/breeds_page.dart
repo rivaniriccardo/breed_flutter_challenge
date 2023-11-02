@@ -21,14 +21,95 @@ class BreedsPage extends StatelessWidget {
           builder: (context, state) {
             return state.map(
               loading: (state) => const AppLoading(),
-              loaded: (state) => BreedsList(
+              loaded: (state) => BreedWidget(
                 breeds: state.breeds,
+                imageUrl: state.imageUrl,
               ),
               error: (state) => const BreedsError(),
             );
           },
         ),
       ),
+    );
+  }
+}
+
+class BreedWidget extends StatelessWidget {
+  const BreedWidget({
+    required this.breeds,
+    required this.imageUrl,
+    super.key,
+  });
+
+  final List<Breed> breeds;
+  final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    // Ritorna un componente che mostra un'immagine con imageUrl e la lista delle breeds (BreedsList)
+    // L'immagine deve essere larga come lo schermo
+    // La lista delle breeds deve occupare lo spazio rimanente
+    // Insieme all'immagine metti un pulsante per rigenerare l'immagine che scatena l'evento BreedsEvent.fetchRandomImage
+
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text('Random image of all breeds',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              )),
+        ),
+        Expanded(
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Image.network(
+                        imageUrl,
+                        width: MediaQuery.of(context).size.width,
+                        height: 300,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                bottom: 16,
+                right: 16,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<BreedsBloc>().add(
+                          const BreedsEvent.fetchRandomImage(),
+                        );
+                  },
+                  child: const Icon(Icons.refresh),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text('Breeds',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              )),
+        ),
+        Expanded(
+          child: BreedsList(
+            breeds: breeds,
+          ),
+        ),
+      ],
     );
   }
 }

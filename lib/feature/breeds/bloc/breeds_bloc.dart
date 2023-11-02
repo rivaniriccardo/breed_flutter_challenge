@@ -12,10 +12,11 @@ part 'breeds_state.dart';
 class BreedsBloc extends Bloc<BreedsEvent, BreedsState> {
   BreedsBloc({
     required this.breedsRepo,
-  }) : super(const BreedsState.loading()) {
+  }) : super(const _Loading()) {
     on<BreedsEvent>((event, emit) async {
       await event.map(
         fetch: (event) => _fetch(event, emit),
+        fetchRandomImage: (event) => _fetchRandomImage(event, emit),
       );
     });
   }
@@ -26,16 +27,35 @@ class BreedsBloc extends Bloc<BreedsEvent, BreedsState> {
     _Fetch event,
     Emitter<BreedsState> emit,
   ) async {
-    emit(const BreedsState.loading());
+    emit(const _Loading());
     try {
       final breeds = await breedsRepo.getBreeds();
+
+      final imageUrl = await breedsRepo.getBreedsRandomImage();
+
       emit(
-        BreedsState.loaded(
+        _Loaded(
           breeds: breeds,
+          imageUrl: imageUrl,
         ),
       );
     } catch (e) {
-      emit(const BreedsState.error());
+      emit(const _Error());
+    }
+  }
+
+  Future _fetchRandomImage(
+    _FetchRandomImage event,
+    Emitter<BreedsState> emit,
+  ) async {
+    final currState = state;
+    if (currState is _Loaded) {
+      try {
+        final imageUrl = await breedsRepo.getBreedsRandomImage();
+        emit(currState.copyWith(imageUrl: imageUrl));
+      } catch (e) {
+        emit(const BreedsState.error());
+      }
     }
   }
 }

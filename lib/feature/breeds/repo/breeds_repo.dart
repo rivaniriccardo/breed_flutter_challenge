@@ -39,4 +39,19 @@ class BreedsRepo {
 
     return breeds;
   }
+
+  Future<String> getBreedsRandomImage() async {
+    final response = await restClient.get(
+      api: '/image/random',
+      endpoint: 'https://dog.ceo/api/breeds',
+    );
+
+    final decoded = jsonDecode(
+      response.body,
+    );
+
+    final imageUrl = decoded['message'];
+
+    return imageUrl;
+  }
 }
