@@ -15,7 +15,10 @@ class BreedsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<BreedsBloc>()..add(const BreedsEvent.fetch()),
+      create: (context) => getIt<BreedsBloc>()
+        ..add(
+          const BreedsEvent.fetch(),
+        ),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Breeds'),

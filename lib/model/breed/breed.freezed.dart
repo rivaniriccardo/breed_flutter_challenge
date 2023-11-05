@@ -14,16 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Breed _$BreedFromJson(Map<String, dynamic> json) {
-  return _Breed.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Breed {
   String get name => throw _privateConstructorUsedError;
   List<String> get subBreeds => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $BreedCopyWith<Breed> get copyWith => throw _privateConstructorUsedError;
 }
@@ -103,13 +98,10 @@ class __$$BreedImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$BreedImpl implements _Breed {
   const _$BreedImpl({required this.name, required final List<String> subBreeds})
       : _subBreeds = subBreeds;
-
-  factory _$BreedImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BreedImplFromJson(json);
 
   @override
   final String name;
@@ -136,7 +128,6 @@ class _$BreedImpl implements _Breed {
                 .equals(other._subBreeds, _subBreeds));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, name, const DeepCollectionEquality().hash(_subBreeds));
@@ -146,21 +137,12 @@ class _$BreedImpl implements _Breed {
   @pragma('vm:prefer-inline')
   _$$BreedImplCopyWith<_$BreedImpl> get copyWith =>
       __$$BreedImplCopyWithImpl<_$BreedImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BreedImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Breed implements Breed {
   const factory _Breed(
       {required final String name,
       required final List<String> subBreeds}) = _$BreedImpl;
-
-  factory _Breed.fromJson(Map<String, dynamic> json) = _$BreedImpl.fromJson;
 
   @override
   String get name;

@@ -33,11 +33,15 @@ class BreedRandomImage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Image.network(
-                        imageUrl,
-                        width: MediaQuery.of(context).size.width,
-                        height: 300,
-                        fit: BoxFit.cover,
-                      ),
+                          key: const Key('random_image'),
+                          imageUrl,
+                          width: MediaQuery.of(context).size.width,
+                          height: 300,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Center(
+                                child: Text('Error loading image'),
+                              )),
                     ),
                   ],
                 ),

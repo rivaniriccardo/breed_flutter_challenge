@@ -20,6 +20,8 @@ dependencies:
   json_annotation: ^4.8.1
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   bloc_test: ^9.1.5

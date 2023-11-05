@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'breed.freezed.dart';
-part 'breed.g.dart';
 
 /*
 SAMPLE:
@@ -16,6 +15,4 @@ class Breed with _$Breed {
     required String name,
     required List<String> subBreeds,
   }) = _Breed;
-
-  factory Breed.fromJson(Map<String, dynamic> json) => _$BreedFromJson(json);
 }
