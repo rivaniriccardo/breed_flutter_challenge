@@ -10,7 +10,6 @@ test-integration:
 test-coverage:
 	@flutter test --coverage && lcov --remove coverage/lcov.info '**/*.freezed.dart' '**/*.g.dart' '**/*.part.dart' '**/*.config.dart' '**/*_event.dart' '**/*_state.dart' '**/core/*' --ignore-errors unused -o coverage/lcov.info && genhtml coverage/lcov.info --output=coverage && open coverage/index.html
 
-
 test-golden:
 	@flutter test --update-goldens
 
