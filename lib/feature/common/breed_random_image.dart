@@ -32,7 +32,9 @@ class BreedRandomImage extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: Image.network(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.network(
                           key: const Key('random_image'),
                           imageUrl,
                           width: MediaQuery.of(context).size.width,
@@ -40,8 +42,10 @@ class BreedRandomImage extends StatelessWidget {
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) =>
                               const Center(
-                                child: Text('Error loading image'),
-                              )),
+                            child: Text('Error loading image'),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -51,6 +55,10 @@ class BreedRandomImage extends StatelessWidget {
                 right: 16,
                 child: ElevatedButton(
                   onPressed: () => onPressed(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue[900],
+                    foregroundColor: Colors.white,
+                  ),
                   child: const Icon(Icons.refresh),
                 ),
               ),

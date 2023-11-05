@@ -21,6 +21,10 @@ class CardListItem extends StatelessWidget {
         subtitle: subtitle != null ? Text(subtitle!) : null,
         trailing: ElevatedButton(
           onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue[900],
+            foregroundColor: Colors.white,
+          ),
           child: const Text('View'),
         ),
       ),
